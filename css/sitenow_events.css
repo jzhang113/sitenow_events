@@ -1,0 +1,31 @@
+.view-events .dateblock {
+    background: none repeat scroll 0 0 #333333;
+    float: left;
+    font-weight: bold;
+    height: 60px;
+    margin-left: 0;
+    margin-right: 10px;
+    opacity: 0.85;
+    text-align: center;
+    width: 60px;
+}
+
+.view-events .views-row {
+	clear:both;
+	display:block;
+	margin-bottom:20px;
+	min-height:60px;
+}
+
+.view-events .dateblock span.month span {
+	color: #EEEEEE;
+    font-size: 1.2em;
+    padding-top: 10px;
+    text-transform: uppercase;
+}
+
+.view-events .dateblock span.day span {
+	color: #EEEEEE;
+    font-size: 2em;
+    padding-bpttom: .5em;
+    text-transform: uppercase;

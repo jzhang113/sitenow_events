@@ -1,0 +1,9 @@
+<?php
+/**
+ * @file
+ * Code for the SiteNow Events feature.
+ */
+
+include_once('sitenow_events.features.inc');
+
+drupal_add_css(drupal_get_path('module', 'sitenow_events') . '/css/sitenow_events.css');
