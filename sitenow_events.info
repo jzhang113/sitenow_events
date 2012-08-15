@@ -81,4 +81,3 @@ features[variable][] = panelizer_node:events_default
 features[variable][] = pathauto_node_events_pattern
 features[variable][] = save_continue_events
 features[views_view][] = events
-project status url = http://dev.sitenow.uiowa.edu/features/fserver
