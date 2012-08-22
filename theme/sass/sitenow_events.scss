@@ -1,0 +1,46 @@
+
+// _base.scss imports _custom.scss and other partials.
+@import "base";
+
+/*
+ * @file
+ * sitenow_articles
+ *
+ * - styles related for basic theming of sitenow_events. Color and other customizations should take place at a higher level
+ */
+
+.view-events {
+	
+	.views-row {
+		clear:both;
+		display:block;
+		margin-bottom:20px;
+		min-height:60px;
+	}
+	
+	.dateblock {
+	    background: none repeat scroll 0 0 #333333;
+	    float: left;
+	    font-weight: bold;
+	    height: 60px;
+	    margin-left: 0;
+	    margin-right: 10px;
+	    opacity: 0.85;
+	    text-align: center;
+	    width: 60px;
+	    
+	    span.month span {
+			color: #EEEEEE;
+	    	font-size: 1.2em;
+	    	padding-top: 10px;
+	    	text-transform: uppercase;
+	    }		
+			
+	    span.day span {
+			color: #EEEEEE;
+	    	font-size: 2em;
+	    	padding-bpttom: .5em;
+	    	text-transform: uppercase;
+	    }		
+	}
+}

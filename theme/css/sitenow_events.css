@@ -1,0 +1,39 @@
+/*
+ * @file
+ * sitenow_articles
+ *
+ * - styles related for basic theming of sitenow_events. Color and other customizations should take place at a higher level
+ */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/standard\/sites\/all\/modules\/features\/sitenow_events\/theme\/sass\/sitenow_events\.scss}line{font-family:\0000314}}
+.view-events .views-row {
+  clear: both;
+  display: block;
+  margin-bottom: 20px;
+  min-height: 60px;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/standard\/sites\/all\/modules\/features\/sitenow_events\/theme\/sass\/sitenow_events\.scss}line{font-family:\0000321}}
+.view-events .dateblock {
+  background: none repeat scroll 0 0 #333333;
+  float: left;
+  font-weight: bold;
+  height: 60px;
+  margin-left: 0;
+  margin-right: 10px;
+  opacity: 0.85;
+  text-align: center;
+  width: 60px;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/standard\/sites\/all\/modules\/features\/sitenow_events\/theme\/sass\/sitenow_events\.scss}line{font-family:\0000332}}
+.view-events .dateblock span.month span {
+  color: #EEEEEE;
+  font-size: 1.2em;
+  padding-top: 10px;
+  text-transform: uppercase;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/standard\/sites\/all\/modules\/features\/sitenow_events\/theme\/sass\/sitenow_events\.scss}line{font-family:\0000339}}
+.view-events .dateblock span.day span {
+  color: #EEEEEE;
+  font-size: 2em;
+  padding-bpttom: .5em;
+  text-transform: uppercase;
+}
