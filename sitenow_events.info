@@ -2,7 +2,6 @@ name = SiteNow Events
 description = Events content type with calendar and views
 core = 7.x
 package = SiteNow
-php = 5.2.4
 version = 7.x-1.0
 project = sitenow_events
 dependencies[] = ctools
