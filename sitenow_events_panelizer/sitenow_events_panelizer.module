@@ -1,8 +1,17 @@
 <?php
 /**
  * @file
- * sitenow_events.panelizer.inc
+ * sitenow_events panelizer defaults
  */
+
+/**
+ * Implements hook_ctools_plugin_api().
+ */
+function sitenow_events_panelizer_ctools_plugin_api($module = NULL, $api = NULL) {
+  if ($module == "panelizer" && $api == "panelizer") {
+    return array("version" => "1");
+  }
+}
 
 /**
  * Implements hook_panelizer_defaults().
@@ -13,7 +22,7 @@ function sitenow_events_panelizer_defaults() {
   $panelizer = new stdClass();
   $panelizer->disabled = FALSE; /* Edit this to true to make a default panelizer disabled initially */
   $panelizer->api_version = 1;
-  $panelizer->name = 'node:event:default:default';
+  $panelizer->name = 'node:event:default';
   $panelizer->title = 'Default';
   $panelizer->panelizer_type = 'node';
   $panelizer->panelizer_key = 'event';
@@ -189,7 +198,7 @@ function sitenow_events_panelizer_defaults() {
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = 'new-3';
   $panelizer->display = $display;
-  $export['node:event:default:default'] = $panelizer;
+  $export['node:event:default'] = $panelizer;
 
   return $export;
 }
