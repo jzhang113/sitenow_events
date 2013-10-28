@@ -15,7 +15,7 @@ function sitenow_events_default_page_manager_pages() {
   $page->task = 'page';
   $page->admin_title = 'Events Panel Page';
   $page->admin_description = 'This panel page displays all upcoming events';
-  $page->path = 'events';
+  $page->path = 'events/!type';
   $page->access = array();
   $page->menu = array(
     'type' => 'normal',
@@ -29,7 +29,24 @@ function sitenow_events_default_page_manager_pages() {
       'weight' => '0',
     ),
   );
-  $page->arguments = array();
+  $page->arguments = array(
+    'type' => array(
+      'id' => 1,
+      'identifier' => 'Taxonomy term: ID',
+      'name' => 'term',
+      'settings' => array(
+        'input_form' => 'tid',
+        'vids' => array(
+          2 => '2',
+          4 => 0,
+          3 => 0,
+          1 => 0,
+        ),
+        'breadcrumb' => 0,
+        'transform' => 0,
+      ),
+    ),
+  );
   $page->conf = array(
     'admin_paths' => FALSE,
   );
@@ -44,15 +61,17 @@ function sitenow_events_default_page_manager_pages() {
   $handler->weight = 0;
   $handler->conf = array(
     'title' => 'Events Panel',
-    'no_blocks' => 1,
+    'no_blocks' => 0,
     'pipeline' => 'ipe',
     'css_id' => 'events-panel-page',
     'css' => '',
     'contexts' => array(),
     'relationships' => array(),
+    'body_classes_to_remove' => '',
+    'body_classes_to_add' => '',
   );
   $display = new panels_display();
-  $display->layout = 'bryant';
+  $display->layout = 'burr_flipped';
   $display->layout_settings = array(
     'items' => array(
       'canvas' => array(
@@ -114,11 +133,30 @@ function sitenow_events_default_page_manager_pages() {
     $pane = new stdClass();
     $pane->pid = 'new-1';
     $pane->panel = 'contentmain';
-    $pane->type = 'views_panes';
-    $pane->subtype = 'events-panel_pane_events_page';
+    $pane->type = 'custom';
+    $pane->subtype = 'custom';
     $pane->shown = TRUE;
-    $pane->access = array();
-    $pane->configuration = array();
+    $pane->access = array(
+      'plugins' => array(
+        0 => array(
+          'name' => 'entity_bundle:taxonomy_term',
+          'settings' => array(
+            'type' => array(
+              'event_type' => 'event_type',
+            ),
+          ),
+          'context' => 'argument_term_1',
+          'not' => FALSE,
+        ),
+      ),
+    );
+    $pane->configuration = array(
+      'admin_title' => 'Active Event Filter',
+      'title' => 'Alert',
+      'body' => '<p>You are currently filtering on &quot;<strong>%type:name</strong>&quot;. <a href="/events">Remove Filter</a></p>',
+      'format' => 'filtered_html',
+      'substitute' => 1,
+    );
     $pane->cache = array();
     $pane->style = array(
       'settings' => NULL,
@@ -131,6 +169,33 @@ function sitenow_events_default_page_manager_pages() {
     $display->panels['contentmain'][0] = 'new-1';
     $pane = new stdClass();
     $pane->pid = 'new-2';
+    $pane->panel = 'contentmain';
+    $pane->type = 'views_panes';
+    $pane->subtype = 'events-panel_pane_events_page';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'use_pager' => 1,
+      'pager_id' => '0',
+      'items_per_page' => '10',
+      'override_title' => 0,
+      'override_title_text' => '',
+      'context' => array(
+        0 => 'argument_term_1',
+      ),
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 1;
+    $pane->locks = array();
+    $display->content['new-2'] = $pane;
+    $display->panels['contentmain'][1] = 'new-2';
+    $pane = new stdClass();
+    $pane->pid = 'new-3';
     $pane->panel = 'sidebar';
     $pane->type = 'views_panes';
     $pane->subtype = 'events-panel_pane_events_mini_calendar';
@@ -145,8 +210,29 @@ function sitenow_events_default_page_manager_pages() {
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = array();
-    $display->content['new-2'] = $pane;
-    $display->panels['sidebar'][0] = 'new-2';
+    $display->content['new-3'] = $pane;
+    $display->panels['sidebar'][0] = 'new-3';
+    $pane = new stdClass();
+    $pane->pid = 'new-4';
+    $pane->panel = 'sidebar';
+    $pane->type = 'views_panes';
+    $pane->subtype = 'events-event_type_filter';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'override_title' => 0,
+      'override_title_text' => '',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 1;
+    $pane->locks = array();
+    $display->content['new-4'] = $pane;
+    $display->panels['sidebar'][1] = 'new-4';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;
