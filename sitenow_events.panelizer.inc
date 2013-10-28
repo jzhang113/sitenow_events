@@ -80,12 +80,12 @@ function sitenow_events_panelizer_defaults() {
     $pane->pid = 'new-2';
     $pane->panel = 'contentmain';
     $pane->type = 'entity_field';
-    $pane->subtype = 'node:body';
+    $pane->subtype = 'node:field_event_type';
     $pane->shown = TRUE;
     $pane->access = array();
     $pane->configuration = array(
-      'label' => 'hidden',
-      'formatter' => 'text_default',
+      'label' => 'above',
+      'formatter' => 'taxonomy_term_reference_link',
       'delta_limit' => 0,
       'delta_offset' => '0',
       'delta_reversed' => FALSE,
@@ -106,21 +106,16 @@ function sitenow_events_panelizer_defaults() {
     $pane->pid = 'new-3';
     $pane->panel = 'contentmain';
     $pane->type = 'entity_field';
-    $pane->subtype = 'node:field_event_location';
+    $pane->subtype = 'node:body';
     $pane->shown = TRUE;
     $pane->access = array();
     $pane->configuration = array(
-      'label' => 'above',
-      'formatter' => 'addressfield_default',
+      'label' => 'hidden',
+      'formatter' => 'text_default',
       'delta_limit' => 0,
       'delta_offset' => '0',
       'delta_reversed' => FALSE,
-      'formatter_settings' => array(
-        'use_widget_handlers' => 1,
-        'format_handlers' => array(
-          0 => 'address',
-        ),
-      ),
+      'formatter_settings' => array(),
       'context' => 'panelizer',
     );
     $pane->cache = array();
@@ -137,16 +132,21 @@ function sitenow_events_panelizer_defaults() {
     $pane->pid = 'new-4';
     $pane->panel = 'contentmain';
     $pane->type = 'entity_field';
-    $pane->subtype = 'node:field_event_type';
+    $pane->subtype = 'node:field_event_location';
     $pane->shown = TRUE;
     $pane->access = array();
     $pane->configuration = array(
       'label' => 'above',
-      'formatter' => 'taxonomy_term_reference_link',
+      'formatter' => 'addressfield_default',
       'delta_limit' => 0,
       'delta_offset' => '0',
       'delta_reversed' => FALSE,
-      'formatter_settings' => array(),
+      'formatter_settings' => array(
+        'use_widget_handlers' => 1,
+        'format_handlers' => array(
+          0 => 'address',
+        ),
+      ),
       'context' => 'panelizer',
     );
     $pane->cache = array();
@@ -187,7 +187,7 @@ function sitenow_events_panelizer_defaults() {
     $display->content['new-5'] = $pane;
     $display->panels['contentmain'][4] = 'new-5';
   $display->hide_title = PANELS_TITLE_FIXED;
-  $display->title_pane = 'new-2';
+  $display->title_pane = 'new-3';
   $panelizer->display = $display;
   $export['node:event:default:default'] = $panelizer;
 
