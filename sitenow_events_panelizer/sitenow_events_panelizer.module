@@ -16,7 +16,7 @@ function sitenow_events_panelizer_ctools_plugin_api($module = NULL, $api = NULL)
 /**
  * Implements hook_panelizer_defaults().
  */
-function sitenow_events_panelizer_defaults() {
+function sitenow_events_panelizer_panelizer_defaults() {
   $export = array();
 
   $panelizer = new stdClass();
