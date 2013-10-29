@@ -1,10 +1,9 @@
 name = SiteNow Events Content
-description = This is default content for the SiteNow Events app
+description = This is demo content for the SiteNow Events app
 core = 7.x
 package = SiteNow Content
 version = 7.x-1.1
 project = sitenow_events_content
-features[content][] = sitenow_event1
-features[content][] = sitenow_event2
-features[features_api][] = api:1
-project status url = http://dev.sitenow.uiowa.edu/features/fserver
+dependencies[] = sitenow_events
+dependencies[] = migrate
+files[] = sitenow_events_content.migrate.inc

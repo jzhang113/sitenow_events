@@ -527,8 +527,6 @@ function sitenow_events_views_default_views() {
   $handler->display->display_options['relationships']['term_node_tid']['required'] = TRUE;
   $handler->display->display_options['relationships']['term_node_tid']['vocabularies'] = array(
     'event_type' => 'event_type',
-    'sitenow_people_department' => 0,
-    'person_type' => 0,
     'tags' => 0,
   );
   $handler->display->display_options['defaults']['fields'] = FALSE;
