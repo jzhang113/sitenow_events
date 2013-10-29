@@ -53,13 +53,21 @@ class SiteNowEventsMigration extends Migration {
     $this->addFieldMapping('body', 'description')
      ->arguments(array('format' => 'filtered_html'));
 
-    // start and end dates
+    // create default start and end date values
+    $start_date = new DateTime();
+    $start_date->modify("+2 day");
 
+    $end_date = new DateTime();
+    $end_date->modify("+7 day");
+
+    // start and end dates
+    $this->addFieldMapping('field_event_date')->defaultValue($start_date->format('Y-m-d H:i:s'));
+    $this->addFieldMapping('field_event_date:to')->defaultValue($end_date->format('Y-m-d H:i:s'));
     // location
 
     // Author mapping. Defaults to user 1.
-    $this->addFieldMapping('uid', 'uid')->defaultValue(1);
-    $this->addFieldMapping('is_new', 'is_new')->defaultValue(TRUE);
+    $this->addFieldMapping('uid')->defaultValue(1);
+    $this->addFieldMapping('is_new')->defaultValue(TRUE);
   }
 
   // Function for the CSV document
@@ -68,9 +76,7 @@ class SiteNowEventsMigration extends Migration {
     $columns[0] = array('nid', 'nid');
     $columns[1] = array('title', 'Title');
     $columns[2] = array('description', 'Description');
-    $columns[3] = array('start', 'Start');
-    $columns[4] = array('end', 'End');
-    $columns[5] = array('locatiion', 'Location');
+    // $columns[3] = array('locatiion', 'Location');
 
     return $columns;
   }
