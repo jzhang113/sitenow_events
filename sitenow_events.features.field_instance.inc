@@ -111,6 +111,60 @@ function sitenow_events_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-event-field_event_geolocation'
+  $field_instances['node-event-field_event_geolocation'] = array(
+    'bundle' => 'event',
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'geofield',
+        'settings' => array(
+          'data' => 'full',
+        ),
+        'type' => 'geofield_wkt',
+        'weight' => 4,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_event_geolocation',
+    'label' => 'Event Geolocation',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'geocoder',
+      'settings' => array(
+        'delta_handling' => 'default',
+        'geocoder_field' => 'field_event_location',
+        'geocoder_handler' => 'google',
+        'handler_settings' => array(
+          'google' => array(
+            'all_results' => 0,
+            'geometry_type' => 'point',
+            'reject_results' => array(
+              'APPROXIMATE' => 0,
+              'GEOMETRIC_CENTER' => 0,
+              'RANGE_INTERPOLATED' => 0,
+              'ROOFTOP' => 0,
+            ),
+          ),
+        ),
+      ),
+      'type' => 'geocoder',
+      'weight' => 31,
+    ),
+  );
+
   // Exported field_instance: 'node-event-field_event_location'
   $field_instances['node-event-field_event_location'] = array(
     'bundle' => 'event',
@@ -214,6 +268,7 @@ function sitenow_events_field_default_field_instances() {
   // Included for use with string extractors like potx.
   t('Description');
   t('Event Date');
+  t('Event Geolocation');
   t('Event Location');
   t('Event Type');
 
