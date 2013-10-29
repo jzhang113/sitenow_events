@@ -17,6 +17,7 @@ dependencies[] = date_views
 dependencies[] = features
 dependencies[] = geocoder
 dependencies[] = geofield
+dependencies[] = geophp
 dependencies[] = menu
 dependencies[] = node
 dependencies[] = override_node_options
