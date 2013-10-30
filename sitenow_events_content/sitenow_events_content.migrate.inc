@@ -58,16 +58,24 @@ class SiteNowEventsMigration extends Migration {
     $start_date->modify("+2 day");
 
     $end_date = new DateTime();
-    $end_date->modify("+7 day");
+    $end_date->modify("+2 day 2 hours");
 
     // start and end dates
-    $this->addFieldMapping('field_event_date')->defaultValue($start_date->format('Y-m-d H:i:s'));
-    $this->addFieldMapping('field_event_date:to')->defaultValue($end_date->format('Y-m-d H:i:s'));
+    $this->addFieldMapping('field_event_date', 'start')->defaultValue($start_date->format('Y-m-d H:i:s'));
+    $this->addFieldMapping('field_event_date:to', 'end')->defaultValue($end_date->format('Y-m-d H:i:s'));
     // location
 
     // Author mapping. Defaults to user 1.
     $this->addFieldMapping('uid')->defaultValue(1);
     $this->addFieldMapping('is_new')->defaultValue(TRUE);
+  }
+
+  /**
+   * Implements migrate::prepare().
+   * use this to programatically set start and end date values for each event
+   */
+  public function prepare($event, stdClass $row) {
+    // $event->field_event_date[LANGUAGE_NONE][0]['value'] =
   }
 
   // Function for the CSV document
@@ -76,7 +84,9 @@ class SiteNowEventsMigration extends Migration {
     $columns[0] = array('nid', 'nid');
     $columns[1] = array('title', 'Title');
     $columns[2] = array('description', 'Description');
-    // $columns[3] = array('locatiion', 'Location');
+    $columns[3] = array('start', 'Start Date');
+    $columns[4] = array('end', 'End Date');
+    $columns[5] = array('location', 'Location');
 
     return $columns;
   }
