@@ -63,7 +63,15 @@ class SiteNowEventsMigration extends Migration {
     // start and end dates
     $this->addFieldMapping('field_event_date', 'start')->defaultValue($start_date->format('Y-m-d H:i:s'));
     $this->addFieldMapping('field_event_date:to', 'end')->defaultValue($end_date->format('Y-m-d H:i:s'));
+
     // location
+    $this->addFieldMapping('field_event_location')->defaultValue('US');
+    $this->addFieldMapping('field_event_location:name_line', 'location_name');
+    $this->addFieldMapping('field_event_location:thoroughfare', 'location_street');
+    $this->addFieldMapping('field_event_location:locality', 'location_city');
+    $this->addFieldMapping('field_event_location:administrative_area', 'location_state');
+    $this->addFieldMapping('field_event_location:postal_code', 'location_zip');
+
 
     // Author mapping. Defaults to user 1.
     $this->addFieldMapping('uid')->defaultValue(1);
@@ -86,7 +94,11 @@ class SiteNowEventsMigration extends Migration {
     $columns[2] = array('description', 'Description');
     $columns[3] = array('start', 'Start Date');
     $columns[4] = array('end', 'End Date');
-    $columns[5] = array('location', 'Location');
+    $columns[5] = array('location_name', 'Location Name');
+    $columns[6] = array('location_street', 'Street');
+    $columns[7] = array('location_city', 'City');
+    $columns[8] = array('location_state', 'State');
+    $columns[9] = array('location_zip', 'Zip');
 
     return $columns;
   }
