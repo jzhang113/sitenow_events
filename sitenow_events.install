@@ -1,0 +1,98 @@
+<?php
+
+/**
+ * @file
+ *
+ * Install and uninstall tasks for SiteNow Events
+ */
+
+/**
+ * Implements hook_enable().
+ * Create sitenow events date formats, types and variables
+ */
+function sitenow_events_enable() {
+  $types = array(
+    array(
+      'type' => 'sitenow_events_date_type',
+      'title' => t('Sitenow Events Date Type'),
+      'locked' => TRUE,
+      'is_new' => TRUE,
+    ),
+    array(
+      'type' => 'sitenow_events_date_type_day',
+      'title' => t('Sitenow Events Day'),
+      'locked' => TRUE,
+      'is_new' => TRUE,
+    ),
+    array(
+      'type' => 'sitenow_events_date_type_short_month',
+      'title' => t('Sitenow Events Short Month'),
+      'locked' => TRUE,
+      'is_new' => TRUE,
+    ),
+    array(
+      'type' => 'sitenow_events_date_type_month',
+      'title' => t('Sitenow Events Month'),
+      'locked' => TRUE,
+      'is_new' => TRUE,
+    ),
+  );
+
+  foreach ($types as $type) {
+    // save the type
+    system_date_format_type_save($type);
+  }
+
+  $formats = array(
+    array(
+      'type'    => 'sitenow_events_date_type',
+      'format'  => 'M d, Y', // Jan 01, 2013
+      'locked' => TRUE,
+      'is_new' => TRUE,
+    ),
+    array(
+      'type'    => 'sitenow_events_date_type_day',
+      'format'  => 'd', // 01
+      'locked' => TRUE,
+      'is_new' => TRUE,
+    ),
+    array(
+      'type'    => 'sitenow_events_date_type_short_month',
+      'format'  => 'M', // Jan
+      'locked' => TRUE,
+      'is_new' => TRUE,
+    ),
+    array(
+      'type'    => 'sitenow_events_date_type_month',
+      'format'  => 'F', // January
+      'locked' => TRUE,
+      'is_new' => TRUE,
+    ),
+  );
+
+  foreach ($formats as $date_format) {
+    // save the format
+    system_date_format_save($date_format, $dfid = 0);
+    // save the variable
+    variable_set('date_format_' . $format['type'], $format['format']);
+  }
+}
+
+/**
+ * Implements hook_disable().
+ * Remove sitenow events date formats, types and variables
+ */
+function sitenow_events_disable() {
+  $types = array(
+    'sitenow_events_date_type',
+    'sitenow_events_date_type_day',
+    'sitenow_events_date_type_short_month',
+    'sitenow_events_date_type_month',
+  );
+  foreach ($types as $type) {
+    // delete variables
+    variable_del('date_format_' . $type);
+    // delete types
+    system_date_format_type_delete($type);
+  }
+}
