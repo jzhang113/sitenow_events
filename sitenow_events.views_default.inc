@@ -309,14 +309,13 @@ function sitenow_events_views_default_views() {
   $handler->display->display_options['allow']['fields_override'] = 0;
 
   /* Display: All Upcoming Events */
-  $handler = $view->new_display('panel_pane', 'All Upcoming Events', 'panel_pane_events_page');
+  $handler = $view->new_display('panel_pane', 'All Upcoming Events', 'events_upcomming');
   $handler->display->display_options['defaults']['title'] = FALSE;
   $handler->display->display_options['title'] = 'Upcoming Events';
   $handler->display->display_options['defaults']['pager'] = FALSE;
-  $handler->display->display_options['pager']['type'] = 'mini';
+  $handler->display->display_options['pager']['type'] = 'some';
   $handler->display->display_options['pager']['options']['items_per_page'] = '10';
   $handler->display->display_options['pager']['options']['offset'] = '0';
-  $handler->display->display_options['pager']['options']['id'] = '0';
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['defaults']['style_options'] = FALSE;
@@ -340,7 +339,7 @@ function sitenow_events_views_default_views() {
   $handler->display->display_options['fields']['field_event_date']['label'] = '';
   $handler->display->display_options['fields']['field_event_date']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_event_date']['settings'] = array(
-    'format_type' => 'event_date_type',
+    'format_type' => 'long',
     'fromto' => 'both',
     'multiple_number' => '',
     'multiple_from' => '',
@@ -349,7 +348,7 @@ function sitenow_events_views_default_views() {
   );
   $handler->display->display_options['fields']['field_event_date']['group_rows'] = FALSE;
   $handler->display->display_options['fields']['field_event_date']['delta_offset'] = '0';
-  /* Field: Content: Description */
+  /* Field: Content: Body */
   $handler->display->display_options['fields']['body']['id'] = 'body';
   $handler->display->display_options['fields']['body']['table'] = 'field_data_body';
   $handler->display->display_options['fields']['body']['field'] = 'body';
@@ -383,6 +382,7 @@ function sitenow_events_views_default_views() {
     'event_type' => 'event_type',
   );
   $handler->display->display_options['pane_title'] = 'All Upcoming Events';
+  $handler->display->display_options['pane_description'] = 'Listing of all upcomming events';
   $handler->display->display_options['pane_category']['name'] = 'Events';
   $handler->display->display_options['pane_category']['weight'] = '0';
   $handler->display->display_options['allow']['use_pager'] = 'use_pager';

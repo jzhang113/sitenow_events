@@ -31,6 +31,9 @@ function sitenow_events_strongarm() {
         'path' => array(
           'weight' => '5',
         ),
+        'xmlsitemap' => array(
+          'weight' => '30',
+        ),
       ),
       'display' => array(),
     ),

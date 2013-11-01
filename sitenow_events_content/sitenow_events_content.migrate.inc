@@ -58,16 +58,32 @@ class SiteNowEventsMigration extends Migration {
     $start_date->modify("+2 day");
 
     $end_date = new DateTime();
-    $end_date->modify("+7 day");
+    $end_date->modify("+2 day 2 hours");
 
     // start and end dates
-    $this->addFieldMapping('field_event_date')->defaultValue($start_date->format('Y-m-d H:i:s'));
-    $this->addFieldMapping('field_event_date:to')->defaultValue($end_date->format('Y-m-d H:i:s'));
+    $this->addFieldMapping('field_event_date', 'start')->defaultValue($start_date->format('Y-m-d H:i:s'));
+    $this->addFieldMapping('field_event_date:to', 'end')->defaultValue($end_date->format('Y-m-d H:i:s'));
+
     // location
+    $this->addFieldMapping('field_event_location')->defaultValue('US');
+    $this->addFieldMapping('field_event_location:name_line', 'location_name');
+    $this->addFieldMapping('field_event_location:thoroughfare', 'location_street');
+    $this->addFieldMapping('field_event_location:locality', 'location_city');
+    $this->addFieldMapping('field_event_location:administrative_area', 'location_state');
+    $this->addFieldMapping('field_event_location:postal_code', 'location_zip');
+
 
     // Author mapping. Defaults to user 1.
     $this->addFieldMapping('uid')->defaultValue(1);
     $this->addFieldMapping('is_new')->defaultValue(TRUE);
+  }
+
+  /**
+   * Implements migrate::prepare().
+   * use this to programatically set start and end date values for each event
+   */
+  public function prepare($event, stdClass $row) {
+    // $event->field_event_date[LANGUAGE_NONE][0]['value'] =
   }
 
   // Function for the CSV document
@@ -76,7 +92,13 @@ class SiteNowEventsMigration extends Migration {
     $columns[0] = array('nid', 'nid');
     $columns[1] = array('title', 'Title');
     $columns[2] = array('description', 'Description');
-    // $columns[3] = array('locatiion', 'Location');
+    $columns[3] = array('start', 'Start Date');
+    $columns[4] = array('end', 'End Date');
+    $columns[5] = array('location_name', 'Location Name');
+    $columns[6] = array('location_street', 'Street');
+    $columns[7] = array('location_city', 'City');
+    $columns[8] = array('location_state', 'State');
+    $columns[9] = array('location_zip', 'Zip');
 
     return $columns;
   }
