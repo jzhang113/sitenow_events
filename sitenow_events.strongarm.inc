@@ -32,7 +32,7 @@ function sitenow_events_strongarm() {
           'weight' => '5',
         ),
         'xmlsitemap' => array(
-          'weight' => '30',
+          'weight' => '6',
         ),
       ),
       'display' => array(),

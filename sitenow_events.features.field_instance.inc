@@ -66,6 +66,48 @@ function sitenow_events_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-event-field_event_description'
+  $field_instances['node-event-field_event_description'] = array(
+    'bundle' => 'event',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 4,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_event_description',
+    'label' => 'Event Description',
+    'required' => 0,
+    'settings' => array(
+      'display_summary' => 1,
+      'text_processing' => 1,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'rows' => 20,
+        'summary_rows' => 5,
+      ),
+      'type' => 'text_textarea_with_summary',
+      'weight' => 3,
+    ),
+  );
+
   // Exported field_instance: 'node-event-field_event_geolocation'
   $field_instances['node-event-field_event_geolocation'] = array(
     'bundle' => 'event',
