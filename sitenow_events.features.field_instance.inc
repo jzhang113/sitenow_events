@@ -263,8 +263,8 @@ function sitenow_events_field_default_field_instances() {
 
   // Translatables
   // Included for use with string extractors like potx.
-  t('Description');
   t('Event Date');
+  t('Event Description');
   t('Event Geolocation');
   t('Event Location');
   t('Event Type');
