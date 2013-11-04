@@ -72,10 +72,10 @@ class SiteNowEventsMigration extends Migration {
     $this->addFieldMapping('field_event_location:administrative_area', 'location_state');
     $this->addFieldMapping('field_event_location:postal_code', 'location_zip');
 
-
     // Author mapping. Defaults to user 1.
     $this->addFieldMapping('uid')->defaultValue(1);
     $this->addFieldMapping('is_new')->defaultValue(TRUE);
+    $this->addFieldMapping('promote', 'promote')->defaultValue(FALSE);
   }
 
   /**
@@ -99,6 +99,7 @@ class SiteNowEventsMigration extends Migration {
     $columns[7] = array('location_city', 'City');
     $columns[8] = array('location_state', 'State');
     $columns[9] = array('location_zip', 'Zip');
+    $columns[10] = array('promote', 'Promote');
 
     return $columns;
   }
