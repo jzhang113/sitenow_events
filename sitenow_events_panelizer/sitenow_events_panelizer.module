@@ -187,6 +187,7 @@ function sitenow_events_panelizer_panelizer_defaults() {
         'leaflet_map' => 'OSM Mapnik',
         'height' => '400',
         'popup' => 1,
+        'scrollWheelZoom' => 0,
       ),
       'context' => 'panelizer',
       'override_title' => 0,
