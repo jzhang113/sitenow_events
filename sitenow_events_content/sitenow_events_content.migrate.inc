@@ -50,7 +50,7 @@ class SiteNowEventsMigration extends Migration {
 
     // Bring on the field mappings
     $this->addFieldMapping('title', 'title');
-    $this->addFieldMapping('body', 'description')
+    $this->addFieldMapping('field_event_description', 'description')
      ->arguments(array('format' => 'filtered_html'));
 
     // create default start and end date values
