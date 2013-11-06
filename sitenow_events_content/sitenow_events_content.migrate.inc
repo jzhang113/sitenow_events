@@ -53,6 +53,13 @@ class SiteNowEventsMigration extends Migration {
     $this->addFieldMapping('field_event_description', 'description')
      ->arguments(array('format' => 'filtered_html'));
 
+    // event type taxonomy
+    $this->addFieldMapping('field_event_type', 'type')
+         ->arguments(array(
+           'create_term' => TRUE,
+           'ignore_case' => TRUE,
+           ));
+
     // create default start and end date values
     $start_date = new DateTime();
     $start_date->modify("+2 day");
@@ -92,14 +99,15 @@ class SiteNowEventsMigration extends Migration {
     $columns[0] = array('nid', 'nid');
     $columns[1] = array('title', 'Title');
     $columns[2] = array('description', 'Description');
-    $columns[3] = array('start', 'Start Date');
-    $columns[4] = array('end', 'End Date');
-    $columns[5] = array('location_name', 'Location Name');
-    $columns[6] = array('location_street', 'Street');
-    $columns[7] = array('location_city', 'City');
-    $columns[8] = array('location_state', 'State');
-    $columns[9] = array('location_zip', 'Zip');
-    $columns[10] = array('promote', 'Promote');
+    $columns[3] = array('type', 'Event Type');
+    $columns[4] = array('start', 'Start Date');
+    $columns[5] = array('end', 'End Date');
+    $columns[6] = array('location_name', 'Location Name');
+    $columns[7] = array('location_street', 'Street');
+    $columns[8] = array('location_city', 'City');
+    $columns[9] = array('location_state', 'State');
+    $columns[10] = array('location_zip', 'Zip');
+    $columns[11] = array('promote', 'Promote');
 
     return $columns;
   }
