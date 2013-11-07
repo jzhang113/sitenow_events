@@ -48,12 +48,7 @@ function sitenow_events_panels_default_page_manager_pages() {
       'name' => 'term',
       'settings' => array(
         'input_form' => 'tid',
-        'vids' => array(
-          2 => '2',
-          4 => 0,
-          3 => 0,
-          1 => 0,
-        ),
+        'vids' => array(),
         'breadcrumb' => 0,
         'transform' => 0,
       ),
