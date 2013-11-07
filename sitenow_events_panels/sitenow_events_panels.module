@@ -160,7 +160,7 @@ function sitenow_events_panels_default_page_manager_pages() {
   $pane->configuration = array(
     'admin_title' => 'Active Event Filter',
     'title' => 'Alert',
-    'body' => '<p>You are currently filtering on &quot;<strong>%type:name</strong>&quot;. <a href="/events">Remove Filter</a></p>',
+    'body' => '<p>You are currently filtering on &quot;<strong>%type:name</strong>&quot;. <a href="../events">Remove Filter</a></p>',
     'format' => 'filtered_html',
     'substitute' => 1,
   );
