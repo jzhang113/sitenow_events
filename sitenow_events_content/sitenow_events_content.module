@@ -11,11 +11,11 @@
 * disable edit and deletion of demo content.
 */
 
-function sitenow_events_form_event_node_form_alter(&$form, &$form_state, $form_id) {
+function sitenow_events_content_form_event_node_form_alter(&$form, &$form_state, $form_id) {
   // check to see if this is add form or edit form
   if(isset($form['nid']['#value'])) {
     // call custom function to see if node has been migrated
-    $is_demo = _sitenow_events_get_demo_content($form['nid']['#value']);
+    $is_demo = _sitenow_events_content_get_demo_content($form['nid']['#value']);
     // if node has been migrated disable form and set warning to notify users
     if ($is_demo == TRUE) {
       drupal_set_message(t("This event is demo content and can't be edited or deleted.<br/>To remove this event you must disable demo content for events"), 'error');
@@ -30,8 +30,8 @@ function sitenow_events_form_event_node_form_alter(&$form, &$form_state, $form_i
 * disable deletion of demo content from node/$nid/delete.
 */
 
-function sitenow_events_form_node_delete_confirm_alter(&$form, &$form_state, $form_id) {
-  if ($form['#node']->type == 'event' && _sitenow_events_get_demo_content($form['#node']->nid) == TRUE) {
+function sitenow_events_content_form_node_delete_confirm_alter(&$form, &$form_state, $form_id) {
+  if ($form['#node']->type == 'event' && _sitenow_events_content_get_demo_content($form['#node']->nid) == TRUE) {
     $form['actions']['submit']['#access'] = FALSE;
     drupal_set_message(t("This event is demo content and can't be edited or deleted.<br/>To remove this event you must disable demo content for events"), 'error');
   }
@@ -43,12 +43,12 @@ function sitenow_events_form_node_delete_confirm_alter(&$form, &$form_state, $fo
 * disable deletion of demo content from find content bulk operation.
 */
 
-function sitenow_events_form_node_admin_content_alter(&$form, &$form_state, $form_id) {
+function sitenow_events_content_form_node_admin_content_alter(&$form, &$form_state, $form_id) {
   if (isset($form_state['values']['operation']) && $form_state['values']['operation'] == 'delete') {
     foreach ($form_state['values']['nodes'] as $key => $value) {
       if ($value != 0) {
         $node = node_load($value);
-        if ($node->type == 'event' && _sitenow_events_get_demo_content($node->nid) == TRUE) {
+        if ($node->type == 'event' && _sitenow_events_content_get_demo_content($node->nid) == TRUE) {
           $form['actions']['submit']['#access'] = FALSE;
           drupal_set_message(t("This event is demo content and can't be edited or deleted.<br/>To remove this event you must disable demo content for events"), 'error');
         }
@@ -64,7 +64,7 @@ function sitenow_events_form_node_admin_content_alter(&$form, &$form_state, $for
 * param nid
 */
 
-function _sitenow_events_get_demo_content($nid) {
+function _sitenow_events_content_get_demo_content($nid) {
   // initialize return value
   $demo = FALSE;
   if (isset($nid)) {
