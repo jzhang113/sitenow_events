@@ -795,7 +795,7 @@ function sitenow_events_views_default_views() {
   $handler->display->display_options['fields']['field_event_date_1']['settings'] = array(
     'format_type' => 'sitenow_events_date_type_month',
     'fromto' => 'value',
-    'multiple_number' => '1',
+    'multiple_number' => '',
     'multiple_from' => '',
     'multiple_to' => '',
     'show_repeat_rule' => 'hide',
@@ -816,11 +816,12 @@ function sitenow_events_views_default_views() {
   $handler->display->display_options['fields']['field_event_date_2']['settings'] = array(
     'format_type' => 'sitenow_events_date_type_day',
     'fromto' => 'value',
-    'multiple_number' => '1',
+    'multiple_number' => '',
     'multiple_from' => '',
     'multiple_to' => '',
     'show_repeat_rule' => 'hide',
   );
+  $handler->display->display_options['fields']['field_event_date_2']['group_rows'] = FALSE;
   $handler->display->display_options['fields']['field_event_date_2']['delta_offset'] = '0';
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
@@ -858,13 +859,14 @@ function sitenow_events_views_default_views() {
   $handler->display->display_options['fields']['field_event_date_3']['element_class'] = 'event-start-time';
   $handler->display->display_options['fields']['field_event_date_3']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_event_date_3']['settings'] = array(
-    'format_type' => 'sitenow_events_time',
+    'format_type' => 'sitenow_events_date_type_time',
     'fromto' => 'value',
-    'multiple_number' => '1',
+    'multiple_number' => '',
     'multiple_from' => '',
     'multiple_to' => '',
     'show_repeat_rule' => 'hide',
   );
+  $handler->display->display_options['fields']['field_event_date_3']['group_rows'] = FALSE;
   $handler->display->display_options['fields']['field_event_date_3']['delta_offset'] = '0';
   /* Field: Content: Event Location */
   $handler->display->display_options['fields']['field_event_location']['id'] = 'field_event_location';
