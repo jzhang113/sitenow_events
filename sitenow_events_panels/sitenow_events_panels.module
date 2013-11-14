@@ -131,99 +131,60 @@ function sitenow_events_panels_default_page_manager_pages() {
       'events_region_left' => NULL,
       'sidebar' => NULL,
       'contentmain' => NULL,
+      'first' => NULL,
+      'second' => NULL,
     ),
   );
   $display->cache = array();
   $display->title = '';
   $display->content = array();
   $display->panels = array();
-  $pane = new stdClass();
-  $pane->pid = 'new-1';
-  $pane->panel = 'first';
-  $pane->type = 'custom';
-  $pane->subtype = 'custom';
-  $pane->shown = TRUE;
-  $pane->access = array(
-    'plugins' => array(
-      0 => array(
-        'name' => 'entity_bundle:taxonomy_term',
-        'settings' => array(
-          'type' => array(
-            'event_type' => 'event_type',
-          ),
-        ),
-        'context' => 'argument_term_1',
-        'not' => FALSE,
-      ),
-    ),
-  );
-  $pane->configuration = array(
-    'admin_title' => 'Active Event Filter',
-    'title' => 'Alert',
-    'body' => '<p>You are currently filtering on &quot;<strong>%type:name</strong>&quot;. <a href="../events">Remove Filter</a></p>',
-    'format' => 'filtered_html',
-    'substitute' => 1,
-  );
-  $pane->cache = array();
-  $pane->style = array(
-    'settings' => NULL,
-  );
-  $pane->css = array();
-  $pane->extras = array();
-  $pane->position = 0;
-  $pane->locks = array();
-  $display->content['new-1'] = $pane;
-  $display->panels['first'][0] = 'new-1';
-  $pane = new stdClass();
-  $pane->pid = 'new-2';
-  $pane->panel = 'first';
-  $pane->type = 'views_panes';
-  $pane->subtype = 'events-events_upcomming';
-  $pane->shown = TRUE;
-  $pane->access = array();
-  $pane->configuration = array(
-    'use_pager' => 0,
-    'pager_id' => '0',
-    'items_per_page' => '10',
-    'context' => array(
-      0 => 'empty',
-    ),
-    'override_title' => 0,
-    'override_title_text' => '',
-  );
-  $pane->cache = array();
-  $pane->style = array(
-    'settings' => NULL,
-  );
-  $pane->css = array();
-  $pane->extras = array();
-  $pane->position = 1;
-  $pane->locks = array();
-  $display->content['new-2'] = $pane;
-  $display->panels['first'][1] = 'new-2';
-  $pane = new stdClass();
-  $pane->pid = 'new-3';
-  $pane->panel = 'second';
-  $pane->type = 'views_panes';
-  $pane->subtype = 'events-event_type_filter';
-  $pane->shown = TRUE;
-  $pane->access = array();
-  $pane->configuration = array(
-    'override_title' => 0,
-    'override_title_text' => '',
-  );
-  $pane->cache = array();
-  $pane->style = array(
-    'settings' => NULL,
-  );
-  $pane->css = array();
-  $pane->extras = array();
-  $pane->position = 0;
-  $pane->locks = array();
-  $display->content['new-3'] = $pane;
-  $display->panels['second'][0] = 'new-3';
-  $display->hide_title = PANELS_TITLE_FIXED;
-  $display->title_pane = '0';
+    $pane = new stdClass();
+    $pane->pid = 'new-1';
+    $pane->panel = 'first';
+    $pane->type = 'views_panes';
+    $pane->subtype = 'events-events_teaser';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'more_link' => 0,
+      'use_pager' => 1,
+      'pager_id' => '0',
+      'items_per_page' => '6',
+      'override_title' => 0,
+      'override_title_text' => '',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 0;
+    $pane->locks = array();
+    $display->content['new-1'] = $pane;
+    $display->panels['first'][0] = 'new-1';
+    $pane = new stdClass();
+    $pane->pid = 'new-2';
+    $pane->panel = 'second';
+    $pane->type = 'views_panes';
+    $pane->subtype = 'events-event_type_links';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'override_title' => 0,
+      'override_title_text' => '',
+    );
+    $pane->cache = array();
+    $pane->style = array();
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 0;
+    $pane->locks = array();
+    $display->content['new-2'] = $pane;
+    $display->panels['second'][0] = 'new-2';
+  $display->hide_title = PANELS_TITLE_PANE;
+  $display->title_pane = 'new-1';
   $handler->conf['display'] = $display;
   $page->default_handlers[$handler->name] = $handler;
   $pages['events_panel_page'] = $page;
