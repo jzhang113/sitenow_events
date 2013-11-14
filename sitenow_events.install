@@ -74,7 +74,7 @@ function sitenow_events_enable() {
     // save the format
     system_date_format_save($date_format, $dfid = 0);
     // save the variable
-    variable_set('date_format_' . $format['type'], $format['format']);
+    variable_set('date_format_' . $date_format['type'], $date_format['format']);
   }
 }
 
