@@ -36,6 +36,12 @@ function sitenow_events_enable() {
       'locked' => TRUE,
       'is_new' => TRUE,
     ),
+    array(
+      'type' => 'sitenow_events_date_type_time',
+      'title' => t('Sitenow Events Time'),
+      'locked' => TRUE,
+      'is_new' => TRUE,
+    ),
   );
 
   foreach ($types as $type) {
@@ -68,6 +74,12 @@ function sitenow_events_enable() {
       'locked' => TRUE,
       'is_new' => TRUE,
     ),
+    array(
+      'type'    => 'sitenow_events_date_type_time',
+      'format'  => 'g:ia', // 12:00am
+      'locked' => TRUE,
+      'is_new' => TRUE,
+    ),
   );
 
   foreach ($formats as $date_format) {
@@ -88,6 +100,7 @@ function sitenow_events_disable() {
     'sitenow_events_date_type_day',
     'sitenow_events_date_type_short_month',
     'sitenow_events_date_type_month',
+    'sitenow_events_date_type_time',
   );
   foreach ($types as $type) {
     // delete variables
