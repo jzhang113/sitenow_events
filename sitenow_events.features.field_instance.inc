@@ -143,7 +143,7 @@ function sitenow_events_field_default_field_instances() {
       'settings' => array(
         'delta_handling' => 'default',
         'geocoder_field' => 'field_event_location',
-        'geocoder_handler' => 'google',
+        'geocoder_handler' => 'latlon',
         'handler_settings' => array(
           'google' => array(
             'all_results' => 0,
