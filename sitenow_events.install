@@ -90,7 +90,9 @@ function sitenow_events_enable() {
   }
 
   // Revert the sitenow_events feature.
-  features_revert('sitenow_events');
+  $feature = features_get_features('sitenow_events');
+  $components = array_keys($feature->info['features']);
+  features_revert(array('sitenow_events' => $components));
 }
 
 /**
