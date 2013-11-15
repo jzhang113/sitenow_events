@@ -93,6 +93,25 @@ class SiteNowEventsMigration extends Migration {
     // $event->field_event_date[LANGUAGE_NONE][0]['value'] =
   }
 
+  /**
+   * Implements migrate::postRollback().
+   * use this to delete demo taxonomy terms that were imported
+   */
+  public function postRollback() {
+    parent::postRollback();
+    // initialize array of term names
+    $names = array('Demo Event Type 1','Demo Event Type 2');
+    // loop through array
+    foreach ($names as $name) {
+      // get term ids from name
+      $terms = taxonomy_get_term_by_name($name, 'event_type');
+      // loop through term ids and delete them
+      foreach ($terms as $term) {
+        taxonomy_term_delete($term->tid);
+      }
+    }
+  }
+
   // Function for the CSV document
   function csvcolumns() {
     // Title", "Path", "Body"
