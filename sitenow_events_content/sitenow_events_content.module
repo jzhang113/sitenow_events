@@ -115,16 +115,39 @@ function sitenow_events_content_form_file_entity_admin_file_alter(&$form, &$form
       if ($value != 0) {
         $file = file_load($value);
         $usage = file_usage_list($file);
+        $is_demo = FALSE;
         foreach ($usage['file']['node'] as $key => $value) {
           // check if node used on is demo content
-          $is_demo = _sitenow_events_content_get_demo_content($key);
-          if ($is_demo == TRUE) {
-            drupal_set_message(t("This file is demo content and can't be edited or deleted.<br/>To remove this file you must disable demo content for events"), 'error');
-            $form['actions']['submit']['#access'] = FALSE;
+          if (_sitenow_events_content_get_demo_content($key) == TRUE) {
+            $is_demo =TRUE;
           }
+        }
+        if ($is_demo == TRUE) {
+          drupal_set_message(t("This file is demo content and can't be edited or deleted.<br/>To remove this file you must disable demo content for events"), 'error');
+          $form['actions']['submit']['#access'] = FALSE;
         }
       }
     }
+  }
+}
+
+/**
+* Implements hook_form_FORM_ID_alter().
+*
+* disable edit and deletion of demo content taxonomy terms.
+*/
+
+function sitenow_events_content_form_taxonomy_form_term_alter(&$form, &$form_state, $form_id) {
+  $usage = taxonomy_select_nodes($form['tid']);
+  $is_demo = FALSE;
+  foreach ($usage as $value) {
+    if(_sitenow_events_content_get_demo_content($value) == TRUE) {
+      $is_demo =TRUE;
+    }
+  }
+  if ($is_demo == TRUE) {
+    drupal_set_message(t("This file is demo content and can't be edited or deleted.<br/>To remove this file you must disable demo content for events"), 'error');
+    $form['#disabled'] = TRUE;
   }
 }
 
