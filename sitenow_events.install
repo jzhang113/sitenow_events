@@ -8,9 +8,9 @@
 
 /**
  * Implements hook_enable().
+ * Create sitenow events date formats, types and variables
  */
 function sitenow_events_enable() {
-  // Create sitenow events date formats, types and variables
   $types = array(
     array(
       'type' => 'sitenow_events_date_type',
@@ -154,4 +154,9 @@ function sitenow_events_disable() {
 
   // Purge all field information.
   field_purge_batch(1000);
+
+  // Disable submodules of SiteNow Events
+  $module_list = array('sitenow_events_panelizer', 'sitenow_events_panels',);
+  $disable_dependents = FALSE;
+  module_disable($module_list, $disable_dependents);
 }
