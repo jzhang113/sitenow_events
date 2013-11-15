@@ -5,3 +5,5 @@
  */
 
 include_once('sitenow_events.features.inc');
+include_once('sitenow_events.panelizer.inc');
+include_once('sitenow_events.panels.inc');

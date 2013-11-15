@@ -1,25 +1,13 @@
 <?php
 /**
  * @file
- * sitenow_events panels defaults
- * moved from features to allow overrides
- * in own module because of ctools function
+ * Provides a panel page for events.
  */
-
-/**
- * Implements hook_ctools_plugin_api().
- */
-function sitenow_events_panels_ctools_plugin_api() {
-  list($module, $api) = func_get_args();
-  if ($module == "page_manager" && $api == "pages_default") {
-    return array("version" => "1");
-  }
-}
 
 /**
  * Implements hook_default_page_manager_pages().
  */
-function sitenow_events_panels_default_page_manager_pages() {
+function sitenow_events_default_page_manager_pages() {
   $page = new stdClass();
   $page->disabled = FALSE; /* Edit this to true to make a default page disabled initially */
   $page->api_version = 1;

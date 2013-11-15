@@ -1,22 +1,13 @@
 <?php
 /**
  * @file
- * sitenow_events panelizer defaults
+ * Panelizer defaults for the Event content type.
  */
-
-/**
- * Implements hook_ctools_plugin_api().
- */
-function sitenow_events_panelizer_ctools_plugin_api($module = NULL, $api = NULL) {
-  if ($module == "panelizer" && $api == "panelizer") {
-    return array("version" => "1");
-  }
-}
 
 /**
  * Implements hook_panelizer_defaults().
  */
-function sitenow_events_panelizer_panelizer_defaults() {
+function sitenow_events_panelizer_defaults() {
   $export = array();
 
   $panelizer = new stdClass();
