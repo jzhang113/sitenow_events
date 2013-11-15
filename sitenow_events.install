@@ -52,7 +52,7 @@ function sitenow_events_enable() {
   $formats = array(
     array(
       'type'    => 'sitenow_events_date_type',
-      'format'  => 'M d, Y', // Jan 01, 2013
+      'format'  => 'l F j, Y', // Jan 01, 2013
       'locked' => TRUE,
       'is_new' => TRUE,
     ),
