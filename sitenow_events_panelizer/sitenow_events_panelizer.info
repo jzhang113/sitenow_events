@@ -1,0 +1,6 @@
+name = SiteNow Events Panelizer
+description = Events panelizer defaults for SiteNow Standard Service
+core = 7.x
+package = SiteNow
+version = 7.x-1.0
+project = sitenow_events_panelizer
