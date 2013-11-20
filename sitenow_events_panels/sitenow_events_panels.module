@@ -153,6 +153,10 @@ function sitenow_events_panels_default_page_manager_pages() {
       'items_per_page' => '6',
       'override_title' => 0,
       'override_title_text' => '',
+      'exposed' => array(
+        'field_event_type_tid' => array(),
+        'promote' => 'All',
+      ),
     );
     $pane->cache = array();
     $pane->style = array(
@@ -176,7 +180,9 @@ function sitenow_events_panels_default_page_manager_pages() {
       'override_title_text' => '',
     );
     $pane->cache = array();
-    $pane->style = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
     $pane->css = array();
     $pane->extras = array();
     $pane->position = 0;
