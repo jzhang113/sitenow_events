@@ -505,6 +505,43 @@ function sitenow_events_views_default_views() {
   $handler->display->display_options['filters']['field_event_date_value2']['granularity'] = 'minute';
   $handler->display->display_options['filters']['field_event_date_value2']['default_date'] = 'now';
   $handler->display->display_options['filters']['field_event_date_value2']['add_delta'] = 'yes';
+  /* Filter criterion: Content: Event Type (field_event_type) */
+  $handler->display->display_options['filters']['field_event_type_tid']['id'] = 'field_event_type_tid';
+  $handler->display->display_options['filters']['field_event_type_tid']['table'] = 'field_data_field_event_type';
+  $handler->display->display_options['filters']['field_event_type_tid']['field'] = 'field_event_type_tid';
+  $handler->display->display_options['filters']['field_event_type_tid']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_event_type_tid']['expose']['operator_id'] = 'field_event_type_tid_op';
+  $handler->display->display_options['filters']['field_event_type_tid']['expose']['label'] = 'Filter by event type';
+  $handler->display->display_options['filters']['field_event_type_tid']['expose']['description'] = 'Optionally display events by event type';
+  $handler->display->display_options['filters']['field_event_type_tid']['expose']['operator'] = 'field_event_type_tid_op';
+  $handler->display->display_options['filters']['field_event_type_tid']['expose']['identifier'] = 'field_event_type_tid';
+  $handler->display->display_options['filters']['field_event_type_tid']['expose']['multiple'] = TRUE;
+  $handler->display->display_options['filters']['field_event_type_tid']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    4 => 0,
+    5 => 0,
+    3 => 0,
+  );
+  $handler->display->display_options['filters']['field_event_type_tid']['type'] = 'select';
+  $handler->display->display_options['filters']['field_event_type_tid']['vocabulary'] = 'event_type';
+  /* Filter criterion: Content: Promoted to front page */
+  $handler->display->display_options['filters']['promote']['id'] = 'promote';
+  $handler->display->display_options['filters']['promote']['table'] = 'node';
+  $handler->display->display_options['filters']['promote']['field'] = 'promote';
+  $handler->display->display_options['filters']['promote']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['promote']['expose']['operator_id'] = '';
+  $handler->display->display_options['filters']['promote']['expose']['label'] = 'Filter by promoted to front';
+  $handler->display->display_options['filters']['promote']['expose']['description'] = 'Optionally display people marked promoted to front';
+  $handler->display->display_options['filters']['promote']['expose']['operator'] = 'promote_op';
+  $handler->display->display_options['filters']['promote']['expose']['identifier'] = 'promote';
+  $handler->display->display_options['filters']['promote']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    4 => 0,
+    5 => 0,
+    3 => 0,
+  );
   $handler->display->display_options['pane_title'] = 'Events teaser list';
   $handler->display->display_options['pane_description'] = 'Teaser listing of upcoming events';
   $handler->display->display_options['pane_category']['name'] = 'Events';
@@ -516,7 +553,7 @@ function sitenow_events_views_default_views() {
   $handler->display->display_options['allow']['more_link'] = 'more_link';
   $handler->display->display_options['allow']['path_override'] = 0;
   $handler->display->display_options['allow']['title_override'] = 'title_override';
-  $handler->display->display_options['allow']['exposed_form'] = 0;
+  $handler->display->display_options['allow']['exposed_form'] = 'exposed_form';
   $handler->display->display_options['allow']['fields_override'] = 0;
   $handler->display->display_options['argument_input'] = array(
     'tid' => array(
@@ -612,28 +649,6 @@ function sitenow_events_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'event' => 'event',
   );
-  /* Filter criterion: Content: Event Type (field_event_type) */
-  $handler->display->display_options['filters']['field_event_type_tid']['id'] = 'field_event_type_tid';
-  $handler->display->display_options['filters']['field_event_type_tid']['table'] = 'field_data_field_event_type';
-  $handler->display->display_options['filters']['field_event_type_tid']['field'] = 'field_event_type_tid';
-  $handler->display->display_options['filters']['field_event_type_tid']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_event_type_tid']['expose']['operator_id'] = 'field_event_type_tid_op';
-  $handler->display->display_options['filters']['field_event_type_tid']['expose']['label'] = 'Event Types';
-  $handler->display->display_options['filters']['field_event_type_tid']['expose']['description'] = 'Select the types of events to display. If no selection is made, events of all types will display.';
-  $handler->display->display_options['filters']['field_event_type_tid']['expose']['operator'] = 'field_event_type_tid_op';
-  $handler->display->display_options['filters']['field_event_type_tid']['expose']['identifier'] = 'field_event_type_tid';
-  $handler->display->display_options['filters']['field_event_type_tid']['expose']['multiple'] = TRUE;
-  $handler->display->display_options['filters']['field_event_type_tid']['expose']['remember_roles'] = array(
-    2 => '2',
-    1 => 0,
-    4 => 0,
-    5 => 0,
-    3 => 0,
-  );
-  $handler->display->display_options['filters']['field_event_type_tid']['reduce_duplicates'] = TRUE;
-  $handler->display->display_options['filters']['field_event_type_tid']['type'] = 'select';
-  $handler->display->display_options['filters']['field_event_type_tid']['vocabulary'] = 'event_type';
-  $handler->display->display_options['filters']['field_event_type_tid']['hierarchy'] = 1;
   /* Filter criterion: Content: Event Date - end date (field_event_date:value2) */
   $handler->display->display_options['filters']['field_event_date_value2']['id'] = 'field_event_date_value2';
   $handler->display->display_options['filters']['field_event_date_value2']['table'] = 'field_data_field_event_date';
@@ -648,7 +663,8 @@ function sitenow_events_views_default_views() {
   $handler->display->display_options['filters']['promote']['field'] = 'promote';
   $handler->display->display_options['filters']['promote']['exposed'] = TRUE;
   $handler->display->display_options['filters']['promote']['expose']['operator_id'] = '';
-  $handler->display->display_options['filters']['promote']['expose']['label'] = 'Promoted to front page';
+  $handler->display->display_options['filters']['promote']['expose']['label'] = 'Filter by promoted to front';
+  $handler->display->display_options['filters']['promote']['expose']['description'] = 'Optionally display people marked promoted to front';
   $handler->display->display_options['filters']['promote']['expose']['operator'] = 'promote_op';
   $handler->display->display_options['filters']['promote']['expose']['identifier'] = 'promote';
   $handler->display->display_options['filters']['promote']['expose']['remember_roles'] = array(
@@ -658,6 +674,26 @@ function sitenow_events_views_default_views() {
     5 => 0,
     3 => 0,
   );
+  /* Filter criterion: Content: Event Type (field_event_type) */
+  $handler->display->display_options['filters']['field_event_type_tid_1']['id'] = 'field_event_type_tid_1';
+  $handler->display->display_options['filters']['field_event_type_tid_1']['table'] = 'field_data_field_event_type';
+  $handler->display->display_options['filters']['field_event_type_tid_1']['field'] = 'field_event_type_tid';
+  $handler->display->display_options['filters']['field_event_type_tid_1']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_event_type_tid_1']['expose']['operator_id'] = 'field_event_type_tid_1_op';
+  $handler->display->display_options['filters']['field_event_type_tid_1']['expose']['label'] = 'Filter by event type';
+  $handler->display->display_options['filters']['field_event_type_tid_1']['expose']['description'] = 'Optionally display events by event type';
+  $handler->display->display_options['filters']['field_event_type_tid_1']['expose']['operator'] = 'field_event_type_tid_1_op';
+  $handler->display->display_options['filters']['field_event_type_tid_1']['expose']['identifier'] = 'field_event_type_tid_1';
+  $handler->display->display_options['filters']['field_event_type_tid_1']['expose']['multiple'] = TRUE;
+  $handler->display->display_options['filters']['field_event_type_tid_1']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    4 => 0,
+    5 => 0,
+    3 => 0,
+  );
+  $handler->display->display_options['filters']['field_event_type_tid_1']['type'] = 'select';
+  $handler->display->display_options['filters']['field_event_type_tid_1']['vocabulary'] = 'event_type';
   $handler->display->display_options['pane_title'] = 'Events simple list';
   $handler->display->display_options['pane_category']['name'] = 'Events';
   $handler->display->display_options['pane_category']['weight'] = '0';
@@ -940,6 +976,43 @@ function sitenow_events_views_default_views() {
   $handler->display->display_options['filters']['field_event_date_value2']['granularity'] = 'minute';
   $handler->display->display_options['filters']['field_event_date_value2']['default_date'] = 'now';
   $handler->display->display_options['filters']['field_event_date_value2']['add_delta'] = 'yes';
+  /* Filter criterion: Content: Event Type (field_event_type) */
+  $handler->display->display_options['filters']['field_event_type_tid']['id'] = 'field_event_type_tid';
+  $handler->display->display_options['filters']['field_event_type_tid']['table'] = 'field_data_field_event_type';
+  $handler->display->display_options['filters']['field_event_type_tid']['field'] = 'field_event_type_tid';
+  $handler->display->display_options['filters']['field_event_type_tid']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_event_type_tid']['expose']['operator_id'] = 'field_event_type_tid_op';
+  $handler->display->display_options['filters']['field_event_type_tid']['expose']['label'] = 'Filter by event type';
+  $handler->display->display_options['filters']['field_event_type_tid']['expose']['description'] = 'Optionally display events by event type';
+  $handler->display->display_options['filters']['field_event_type_tid']['expose']['operator'] = 'field_event_type_tid_op';
+  $handler->display->display_options['filters']['field_event_type_tid']['expose']['identifier'] = 'field_event_type_tid';
+  $handler->display->display_options['filters']['field_event_type_tid']['expose']['multiple'] = TRUE;
+  $handler->display->display_options['filters']['field_event_type_tid']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    4 => 0,
+    5 => 0,
+    3 => 0,
+  );
+  $handler->display->display_options['filters']['field_event_type_tid']['type'] = 'select';
+  $handler->display->display_options['filters']['field_event_type_tid']['vocabulary'] = 'event_type';
+  /* Filter criterion: Content: Promoted to front page */
+  $handler->display->display_options['filters']['promote']['id'] = 'promote';
+  $handler->display->display_options['filters']['promote']['table'] = 'node';
+  $handler->display->display_options['filters']['promote']['field'] = 'promote';
+  $handler->display->display_options['filters']['promote']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['promote']['expose']['operator_id'] = '';
+  $handler->display->display_options['filters']['promote']['expose']['label'] = 'Filter by promoted to front';
+  $handler->display->display_options['filters']['promote']['expose']['description'] = 'Optionally display people marked promoted to front';
+  $handler->display->display_options['filters']['promote']['expose']['operator'] = 'promote_op';
+  $handler->display->display_options['filters']['promote']['expose']['identifier'] = 'promote';
+  $handler->display->display_options['filters']['promote']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    4 => 0,
+    5 => 0,
+    3 => 0,
+  );
   $handler->display->display_options['pane_title'] = 'Events grid list';
   $handler->display->display_options['pane_description'] = 'Grid listing of upcoming events';
   $handler->display->display_options['pane_category']['name'] = 'Events';
@@ -951,7 +1024,7 @@ function sitenow_events_views_default_views() {
   $handler->display->display_options['allow']['more_link'] = 'more_link';
   $handler->display->display_options['allow']['path_override'] = 0;
   $handler->display->display_options['allow']['title_override'] = 'title_override';
-  $handler->display->display_options['allow']['exposed_form'] = 0;
+  $handler->display->display_options['allow']['exposed_form'] = 'exposed_form';
   $handler->display->display_options['allow']['fields_override'] = 0;
   $handler->display->display_options['argument_input'] = array(
     'tid' => array(
