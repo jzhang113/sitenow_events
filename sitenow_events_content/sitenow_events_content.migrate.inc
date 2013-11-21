@@ -2,7 +2,7 @@
 
 /**
  * @file
- * Migration code for SiteNow People content.
+ * Migration code for SiteNow Events content.
  */
 
 /**
@@ -60,16 +60,10 @@ class SiteNowEventsMigration extends Migration {
            'ignore_case' => TRUE,
            ));
 
-    // create default start and end date values
-    $start_date = new DateTime();
-    $start_date->modify("+2 day");
-
-    $end_date = new DateTime();
-    $end_date->modify("+2 day 2 hours");
-
-    // start and end dates
-    $this->addFieldMapping('field_event_date', 'start')->defaultValue($start_date->format('Y-m-d H:i:s'));
-    $this->addFieldMapping('field_event_date:to', 'end')->defaultValue($end_date->format('Y-m-d H:i:s'));
+    // Set the start date.
+    $this->addFieldMapping('field_event_date')->defaultValue(date('Y-m-d H:i:s'));
+    // Set the end date.
+    $this->addFieldMapping('field_event_date:to')->defaultValue(date('Y-m-d H:i:s'));
 
     // location
     $this->addFieldMapping('field_event_location')->defaultValue('US');
@@ -90,7 +84,23 @@ class SiteNowEventsMigration extends Migration {
    * use this to programatically set start and end date values for each event
    */
   public function prepare($event, stdClass $row) {
-    // $event->field_event_date[LANGUAGE_NONE][0]['value'] =
+    // Create a random date within three months using only quarter-hour granularity.
+    $day = mt_rand(0, 90);
+    $hour = mt_rand(0, 12);
+    $minute = array_rand(array(00 => 00, 15 => 15, 30 => 30, 45 => 45)); // array_rand returns a key.
+
+    $date = new DateTime();
+    $date->modify('+' . $day . ' days');
+    $date->setTime($hour, $minute);
+
+    // set start date to random value
+    $event->field_event_date[LANGUAGE_NONE][0]['value'] = $date->format('Y-m-d H:i:s');
+
+    // Add some hours for the end date.
+    $date->modify('+' . mt_rand(1, 4) . ' hours');
+
+    // set end date to random value
+    $event->field_event_date[LANGUAGE_NONE][0]['value2'] = $date->format('Y-m-d H:i:s');
   }
 
   /**
@@ -119,14 +129,12 @@ class SiteNowEventsMigration extends Migration {
     $columns[1] = array('title', 'Title');
     $columns[2] = array('description', 'Description');
     $columns[3] = array('type', 'Event Type');
-    $columns[4] = array('start', 'Start Date');
-    $columns[5] = array('end', 'End Date');
-    $columns[6] = array('location_name', 'Location Name');
-    $columns[7] = array('location_street', 'Street');
-    $columns[8] = array('location_city', 'City');
-    $columns[9] = array('location_state', 'State');
-    $columns[10] = array('location_zip', 'Zip');
-    $columns[11] = array('promote', 'Promote');
+    $columns[4] = array('location_name', 'Location Name');
+    $columns[5] = array('location_street', 'Street');
+    $columns[6] = array('location_city', 'City');
+    $columns[7] = array('location_state', 'State');
+    $columns[8] = array('location_zip', 'Zip');
+    $columns[9] = array('promote', 'Promote');
 
     return $columns;
   }
