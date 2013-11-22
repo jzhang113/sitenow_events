@@ -86,7 +86,7 @@ class SiteNowEventsMigration extends Migration {
   public function prepare($event, stdClass $row) {
     // Create a random date within three months using only quarter-hour granularity.
     $day = mt_rand(0, 90);
-    $hour = mt_rand(0, 12);
+    $hour = mt_rand(8, 20);
     $minute = array_rand(array(00 => 00, 15 => 15, 30 => 30, 45 => 45)); // array_rand returns a key.
 
     $date = new DateTime();
@@ -96,7 +96,7 @@ class SiteNowEventsMigration extends Migration {
     // set start date to random value
     $event->field_event_date[LANGUAGE_NONE][0]['value'] = $date->format('Y-m-d H:i:s');
 
-    // Add some hours for the end date.
+    // Add between one and four hours for the end date.
     $date->modify('+' . mt_rand(1, 4) . ' hours');
 
     // set end date to random value
