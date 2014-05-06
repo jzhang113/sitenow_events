@@ -214,6 +214,7 @@ function sitenow_events_field_default_field_instances() {
   t('Event Description');
   t('Event Location');
   t('Event Type');
+  t('This a reference to the event type taxonomy. You can add terms to that vocabulary and they will appear in a select list. This allows you to group events into classifications such as webinars or seminars. Only webmasters have permission to edit taxonomies. ');
 
   return $field_instances;
 }
