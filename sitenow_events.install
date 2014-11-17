@@ -130,7 +130,7 @@ function sitenow_events_disable() {
   // all instances of the field, their data, and the field itself.
   foreach (field_info_field_map() as $field_name => $field_info) {
     if (array_key_exists('node', $field_info['bundles'])) {
-      if (in_array('event', $field_info['bundles']['node'])) {        
+      if (in_array('event', $field_info['bundles']['node'])) {
         if (count($field_info['bundles']['node'] == 1)) {
           field_delete_field($field_name);
         }
@@ -159,4 +159,20 @@ function sitenow_events_disable() {
   $module_list = array('sitenow_events_panelizer', 'sitenow_events_panels',);
   $disable_dependents = FALSE;
   module_disable($module_list, $disable_dependents);
+}
+
+/**
+* Disable and uninstall calendar module.
+*/
+function sitenow_events_update_7100(&$sandbox) {
+  module_disable(array('calendar'), $disable_dependents = FALSE);
+  drupal_uninstall_modules(array('calendar'), $uninstall_dependents = FALSE);
+}
+
+/**
+* Disable and uninstall date ical module.
+*/
+function sitenow_events_update_7101(&$sandbox) {
+  module_disable(array('date_ical'), $disable_dependents = FALSE);
+  drupal_uninstall_modules(array('date_ical'), $uninstall_dependents = FALSE);
 }
