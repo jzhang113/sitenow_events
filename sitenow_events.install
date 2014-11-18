@@ -162,17 +162,12 @@ function sitenow_events_disable() {
 }
 
 /**
-* Disable and uninstall calendar module.
+* Disable and uninstall calendar and date_ical modules.
 */
 function sitenow_events_update_7100(&$sandbox) {
-  module_disable(array('calendar'), $disable_dependents = FALSE);
-  drupal_uninstall_modules(array('calendar'), $uninstall_dependents = FALSE);
-}
-
-/**
-* Disable and uninstall date ical module.
-*/
-function sitenow_events_update_7101(&$sandbox) {
-  module_disable(array('date_ical'), $disable_dependents = FALSE);
-  drupal_uninstall_modules(array('date_ical'), $uninstall_dependents = FALSE);
+  $feature = features_get_features('sitenow_events');
+  $components = array_keys($feature->info['features']);
+  features_revert(array('sitenow_events' => $components));
+  module_disable(array('calendar', 'date_ical'), $disable_dependents = FALSE);
+  drupal_uninstall_modules(array('calendar', 'date_ical'), $uninstall_dependents = FALSE);
 }
