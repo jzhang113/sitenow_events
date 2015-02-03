@@ -6,7 +6,7 @@
 
 function sitenow_events_content_enable() {
   // Ensure that migration classes are registered.
-  migrate_get_module_apis(TRUE);
+  Migration::registerMigration('SiteNowEventsMigration', 'SiteNowEvents');
 
   // Import the content
   $classes = array('SiteNowEvents');

@@ -11,9 +11,6 @@
 function sitenow_events_content_migrate_api() {
   $api = array(
     'api' => 2,
-    'migrations' => array(
-      'SiteNowEvents' => array('class_name' => 'SiteNowEventsMigration'),
-    ),
   );
   return $api;
 }
@@ -23,8 +20,8 @@ function sitenow_events_content_migrate_api() {
 // could then be extended by each app.
 class SiteNowEventsMigration extends Migration {
 
-  public function __construct() {
-    parent::__construct(MigrateGroup::getInstance('SiteNow'));
+  public function __construct($arguments) {
+    parent::__construct($arguments);
 
     // Avoid known line ending issue: drupal.org/node/1705850
     ini_set('auto_detect_line_endings', TRUE);
@@ -50,15 +47,15 @@ class SiteNowEventsMigration extends Migration {
 
     // Bring on the field mappings
     $this->addFieldMapping('title', 'title');
-    $this->addFieldMapping('field_event_description', 'description')
-     ->arguments(array('format' => 'filtered_html'));
+    $this->addFieldMapping('field_event_description', 'description');
+    $this->addFieldMapping('field_event_description:format')->defaultValue('filtered_html');
 
     // event type taxonomy
-    $this->addFieldMapping('field_event_type', 'type')
-         ->arguments(array(
-           'create_term' => TRUE,
-           'ignore_case' => TRUE,
-           ));
+    $this->addFieldMapping('field_event_type', 'type');
+    $this->addFieldMapping('field_event_type:create_term')
+         ->defaultValue(TRUE);
+    $this->addFieldMapping('field_event_type:ignore_case')
+         ->defaultValue(TRUE);
 
     // Set the start date.
     $this->addFieldMapping('field_event_date')->defaultValue(date('Y-m-d H:i:s'));
