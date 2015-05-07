@@ -113,7 +113,7 @@ function sitenow_events_field_default_field_instances() {
     'bundle' => 'event',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Select a country to provide an address.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -209,6 +209,7 @@ function sitenow_events_field_default_field_instances() {
   t('Event Location');
   t('Event Type');
   t('This a reference to the <a href="' . $GLOBALS['base_url'] . '/admin/structure/taxonomy/event_type">event type taxonomy</a>. You can add terms to that vocabulary and they will appear in a select list. This allows you to group events into classifications such as webinars or seminars. Only webmasters have permission to edit taxonomies. ');
+  t('Select a country to provide an address.');
 
   return $field_instances;
 }
