@@ -111,19 +111,9 @@ function sitenow_events_field_default_field_instances() {
   // Exported field_instance: 'node-event-field_event_location'
   $field_instances['node-event-field_event_location'] = array(
     'bundle' => 'event',
-    'default_value' => array(
-      0 => array(
-        'element_key' => 'node|event|field_event_location|und|0',
-        'thoroughfare' => '',
-        'premise' => '',
-        'locality' => '',
-        'administrative_area' => '',
-        'postal_code' => '',
-        'country' => 'US',
-      ),
-    ),
+    'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Select a country to provide an address.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -158,12 +148,16 @@ function sitenow_events_field_default_field_instances() {
         'available_countries' => array(
           'US' => 'US',
         ),
+        'default_country' => '',
         'format_handlers' => array(
           'address' => 'address',
           'address-hide-country' => 'address-hide-country',
           'name-oneline' => 'name-oneline',
+          'address-hide-postal-code' => 0,
+          'address-hide-street' => 0,
           'organisation' => 0,
           'name-full' => 0,
+          'address-optional' => 0,
         ),
       ),
       'type' => 'addressfield_standard',
@@ -215,6 +209,7 @@ function sitenow_events_field_default_field_instances() {
   t('Event Location');
   t('Event Type');
   t('This a reference to the <a href="' . $GLOBALS['base_url'] . '/admin/structure/taxonomy/event_type">event type taxonomy</a>. You can add terms to that vocabulary and they will appear in a select list. This allows you to group events into classifications such as webinars or seminars. Only webmasters have permission to edit taxonomies. ');
+  t('Select a country to provide an address.');
 
   return $field_instances;
 }
