@@ -278,6 +278,7 @@ function sitenow_events_views_default_views() {
     5 => 0,
     3 => 0,
   );
+  $handler->display->display_options['filters']['field_event_type_tid']['reduce_duplicates'] = TRUE;
   $handler->display->display_options['filters']['field_event_type_tid']['type'] = 'select';
   $handler->display->display_options['filters']['field_event_type_tid']['vocabulary'] = 'event_type';
   /* Filter criterion: Content: Promoted to front page */
@@ -447,6 +448,7 @@ function sitenow_events_views_default_views() {
     5 => 0,
     3 => 0,
   );
+  $handler->display->display_options['filters']['field_event_type_tid_1']['reduce_duplicates'] = TRUE;
   $handler->display->display_options['filters']['field_event_type_tid_1']['type'] = 'select';
   $handler->display->display_options['filters']['field_event_type_tid_1']['vocabulary'] = 'event_type';
   $handler->display->display_options['pane_title'] = 'Events simple list';
@@ -773,6 +775,7 @@ function sitenow_events_views_default_views() {
     5 => 0,
     3 => 0,
   );
+  $handler->display->display_options['filters']['field_event_type_tid']['reduce_duplicates'] = TRUE;
   $handler->display->display_options['filters']['field_event_type_tid']['type'] = 'select';
   $handler->display->display_options['filters']['field_event_type_tid']['vocabulary'] = 'event_type';
   /* Filter criterion: Content: Promoted to front page */
