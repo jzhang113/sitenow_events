@@ -1,0 +1,8 @@
+{
+    "name": "its-uofiowa/sitenow_events",
+    "description": "Events content type with calendar and views.",
+    "type": "drupal-module",
+    "require": {
+      "composer/installers": "*"
+    }
+}
