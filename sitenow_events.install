@@ -176,6 +176,9 @@ function sitenow_events_update_7100(&$sandbox) {
 * Disable and uninstall date_repeat_fm.
 */
 function sitenow_events_update_7101() {
+  $feature = features_get_features('sitenow_events');
+  $components = array_keys($feature->info['features']);
+  features_revert(array('sitenow_events' => $components));
   module_disable(array('date_repeat_fm'));
   drupal_uninstall_modules(array('date_repeat_fm'));
 }
