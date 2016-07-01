@@ -171,3 +171,11 @@ function sitenow_events_update_7100(&$sandbox) {
   module_disable(array('calendar', 'date_ical'), $disable_dependents = FALSE);
   drupal_uninstall_modules(array('calendar', 'date_ical'), $uninstall_dependents = FALSE);
 }
+
+/**
+* Disable and uninstall date_repeat_fm.
+*/
+function sitenow_events_update_7101() {
+  module_disable(array('date_repeat_fm'));
+  drupal_uninstall_modules(array('date_repeat_fm'));
+}
