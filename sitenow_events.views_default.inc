@@ -258,7 +258,7 @@ function sitenow_events_views_default_views() {
   $handler->display->display_options['filters']['field_event_date_value2']['field'] = 'field_event_date_value2';
   $handler->display->display_options['filters']['field_event_date_value2']['operator'] = '>';
   $handler->display->display_options['filters']['field_event_date_value2']['granularity'] = 'minute';
-  $handler->display->display_options['filters']['field_event_date_value2']['default_date'] = 'now';
+  $handler->display->display_options['filters']['field_event_date_value2']['default_date'] = '12am today';
   $handler->display->display_options['filters']['field_event_date_value2']['add_delta'] = 'yes';
   /* Filter criterion: Content: Event Type (field_event_type) */
   $handler->display->display_options['filters']['field_event_type_tid']['id'] = 'field_event_type_tid';
