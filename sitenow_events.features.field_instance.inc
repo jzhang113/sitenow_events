@@ -10,7 +10,7 @@
 function sitenow_events_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'node-event-field_event_date'
+  // Exported field_instance: 'node-event-field_event_date'.
   $field_instances['node-event-field_event_date'] = array(
     'bundle' => 'event',
     'deleted' => 0,
@@ -25,6 +25,7 @@ function sitenow_events_field_default_field_instances() {
           'multiple_from' => '',
           'multiple_number' => '',
           'multiple_to' => '',
+          'show_remaining_days' => FALSE,
           'show_repeat_rule' => 'show',
         ),
         'type' => 'date_default',
@@ -66,7 +67,7 @@ function sitenow_events_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-event-field_event_description'
+  // Exported field_instance: 'node-event-field_event_description'.
   $field_instances['node-event-field_event_description'] = array(
     'bundle' => 'event',
     'default_value' => NULL,
@@ -108,7 +109,7 @@ function sitenow_events_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-event-field_event_location'
+  // Exported field_instance: 'node-event-field_event_location'.
   $field_instances['node-event-field_event_location'] = array(
     'bundle' => 'event',
     'default_value' => NULL,
@@ -165,12 +166,12 @@ function sitenow_events_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-event-field_event_type'
+  // Exported field_instance: 'node-event-field_event_type'.
   $field_instances['node-event-field_event_type'] = array(
     'bundle' => 'event',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'This a reference to the <a href="' . $GLOBALS['base_url'] . '/admin/structure/taxonomy/event_type">event type taxonomy</a>. You can add terms to that vocabulary and they will appear in a select list. This allows you to group events into classifications such as webinars or seminars. Only webmasters have permission to edit taxonomies. ',
+    'description' => 'This a reference to the <a href="http://standard.dd:8083/admin/structure/taxonomy/event_type">event type taxonomy</a>. You can add terms to that vocabulary and they will appear in a select list. This allows you to group events into classifications such as webinars or seminars. Only webmasters have permission to edit taxonomies. ',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -208,8 +209,8 @@ function sitenow_events_field_default_field_instances() {
   t('Event Description');
   t('Event Location');
   t('Event Type');
-  t('This a reference to the <a href="' . $GLOBALS['base_url'] . '/admin/structure/taxonomy/event_type">event type taxonomy</a>. You can add terms to that vocabulary and they will appear in a select list. This allows you to group events into classifications such as webinars or seminars. Only webmasters have permission to edit taxonomies. ');
   t('Select a country to provide an address.');
+  t('This a reference to the <a href="http://standard.dd:8083/admin/structure/taxonomy/event_type">event type taxonomy</a>. You can add terms to that vocabulary and they will appear in a select list. This allows you to group events into classifications such as webinars or seminars. Only webmasters have permission to edit taxonomies. ');
 
   return $field_instances;
 }

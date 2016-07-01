@@ -10,7 +10,7 @@
 function sitenow_events_field_default_field_bases() {
   $field_bases = array();
 
-  // Exported field_base: 'field_event_date'
+  // Exported field_base: 'field_event_date'.
   $field_bases['field_event_date'] = array(
     'active' => 1,
     'cardinality' => -1,
@@ -40,7 +40,7 @@ function sitenow_events_field_default_field_bases() {
     'type' => 'datetime',
   );
 
-  // Exported field_base: 'field_event_description'
+  // Exported field_base: 'field_event_description'.
   $field_bases['field_event_description'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -59,7 +59,7 @@ function sitenow_events_field_default_field_bases() {
     'type' => 'text_with_summary',
   );
 
-  // Exported field_base: 'field_event_location'
+  // Exported field_base: 'field_event_location'.
   $field_bases['field_event_location'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -74,7 +74,7 @@ function sitenow_events_field_default_field_bases() {
     'type' => 'addressfield',
   );
 
-  // Exported field_base: 'field_event_type'
+  // Exported field_base: 'field_event_type'.
   $field_bases['field_event_type'] = array(
     'active' => 1,
     'cardinality' => -1,
